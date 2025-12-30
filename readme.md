@@ -1,4 +1,4 @@
-### California Housing — Linear & Polynomial Regression Analysis###
+### California Housing — Linear & Polynomial Regression Analysis
 ## Baseline Linear Regression
 
 **Model**: Linear Regression (SGD)
@@ -46,7 +46,7 @@ Test MSE           : 7,086,006,227.02
 
 **Conclusion:** Ridge does not reliably improve generalization for this dataset.
 
-## Feature Engineering + Ridge Regression
+# Feature Engineering + Ridge Regression
 **Engineered Features**
 ```
 rooms_per_household
