@@ -1,0 +1,42 @@
+#baseline linear regression
+training mse: 4859165344.500902   test mse: 5082316308.526379
+training rmse: 69707.71  test rmse: 71290.36
+
+#after ridge
+training mse: 4811134409.29   test mse: 5068545657.22
+training rmse: 69362.34   test rmse: 71193.72
+
+#after ridge with validated alpha 1000
+test mse:  7086006227.02
+
+
+Ridge showed a small improvement on one train–test split.
+After introducing a proper validation split, the improvement disappeared.
+Very large α sometimes appeared best, but this was due to random split noise, not real improvement.
+Decreasing α consistently reduced MSE, indicating the model was bias-limited, not variance-limited.
+Correct interpretation--
+The dataset is mostly linear and not overfitting strongly.
+Ridge adds bias without sufficiently reducing variance.
+Any small test-set improvement from Ridge was not stable across splits.
+Therefore, Ridge does not reliably improve generalization for this dataset.
+Will try polynomial features and feature engineering
+
+#after engineered features[rooms_per_household,bedrooms_per_rooms,density] with validated alpha 10.0
+training mse after ridge validation: 68210.03 
+test rmse after ridge validation:  74183.35
+    
+# after engineered features+ all polys with validated alpha 100
+training mse after ridge validation: 65181.66 
+test rmse after ridge validation:  71895.32
+
+#after engineered features+ median squared and coordinates(latxlong) with validated alpha 10.0
+training mse after ridge validation: 67178.07 
+test rmse after ridge validation:  75748.13
+
+#after median squared and coordinates + all polys with validated alpha 10.0
+training mse after ridge validation: 63050.96 
+test rmse after ridge validation:  72178.24
+
+I tested polynomial regression with selective feature expansion and ridge regularization. 
+While training error consistently decreased, validation and test error did not improve, indicating increased variance and limited nonlinear signal in the dataset. 
+This suggests that linear models are close to optimal for California Housing, and that tree-based models are better suited
